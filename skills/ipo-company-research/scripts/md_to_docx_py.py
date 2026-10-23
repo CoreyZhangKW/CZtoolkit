@@ -118,24 +118,32 @@ while i < len(lines):
         continue
     
     # Table
-    if '|' in line and line.strip().startswith('|'):
+    is_table_line = '|' in line and line.strip().startswith('|')
+
+    # Leaving a table: flush it, then reprocess the current line normally.
+    if in_table and not is_table_line:
+        if table_header and table_rows:
+            add_table(doc, table_header, table_rows)
+        in_table = False
+        table_header = []
+        table_rows = []
+        continue
+
+    if is_table_line:
         if not in_table:
             in_table = True
             table_header = [c.strip() for c in line.split('|')[1:-1]]
+            table_rows = []
             i += 1
+            # Skip the |---|---| separator row that follows the header.
             if i < len(lines) and re.match(r'^[\|\s\-:]+$', lines[i].strip()):
                 i += 1
-        else:
+            continue
+        if not re.match(r'^[\|\s\-:]+$', line.strip()):
             cells = [c.strip() for c in line.split('|')[1:-1]]
             if cells:
                 table_rows.append(cells)
         i += 1
-        if i >= len(lines) or '|' not in lines[i]:
-            if table_header and table_rows:
-                add_table(doc, table_header, table_rows)
-            in_table = False
-            table_header = []
-            table_rows = []
         continue
     
     if not line.strip():

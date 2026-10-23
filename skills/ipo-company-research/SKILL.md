@@ -1,116 +1,142 @@
 ---
 name: ipo-company-research
-description: Conducts comprehensive background research on pre-IPO or listed companies for capital markets lawyers. Use when a user asks to research a company for an IPO pitch, prepare background materials for management meetings, or analyze a company's core business, market position, financial performance, and potential risks for listing purposes.
+description: Conducts comprehensive background research on pre-IPO or listed companies for capital markets lawyers and sponsors. Use when a user asks to research a company for an IPO pitch, prepare background materials for management meetings, analyze a company's core business, market position, financial performance, competitive advantages, capital markets story, or potential risks for listing, refinancing, or investor-facing positioning.
 ---
 
 # IPO Company Research Skill
 
-This skill guides AI workflow in conducting deep, structured background research on companies (especially those preparing for IPOs or already listed) to help capital markets lawyers prepare for management pitches and meetings.
-
-## Source Repository
-
-GitHub: https://github.com/CoreyZhangKW/AItools
-SKILL.md: https://raw.githubusercontent.com/CoreyZhangKW/AItools/main/skills/ipo-company-research/SKILL.md
+This skill guides Manus in conducting deep, structured background research on companies, especially pre-IPO or already listed companies, to help capital markets lawyers and sponsors prepare management pitches, meeting materials, diligence notes, and investor-facing positioning.
 
 ## Core Workflow
 
-When asked to research a company for an IPO project, follow these sequential steps:
+When asked to research a company for an IPO, refinancing, capital markets positioning, or management pitch, follow these steps in order.
 
-### 1. Initial Information Gathering (Broad Search & Disclosures)
+### 1. Confirm Company Identity and Disclosure Universe
 
-- Search for the company's official website, Baidu Baike/Wikipedia/Google, and recent news.
-- Identify the company's exact legal name, founding history, registered capital, and recent major corporate events (e.g., restructuring, M&A, and debt offering).
-- **Crucial for Listed/Delisted Companies**: If the company is currently listed or was previously listed (A-share, HKEX, US markets), you MUST search for and review its public disclosures, specifically the latest Annual Reports (年报), Semi-Annual Reports (半年报), other regular or ad hoc reports and disclosures, and its original IPO Prospectus (招股书) in Chinese or English.
+- Identify the company's exact legal name, common short name, stock code if any, official website, registered address, founding history, registered capital, controller, and key corporate milestones and recent corporate events such as restructuring, M&A, or debt offerings.
+- If the company is listed, delisted, or has previously filed for listing, prioritize official public disclosures over secondary sources. Search and review the latest annual report, latest semi-annual report, latest quarterly updates where relevant, ESG or sustainability report, IPO prospectus, listing application proof, bond offering memorandum, feedback responses, regulatory notices, and major transaction announcements.
+- For A-share companies, search CNINFO, exchange websites (上交所/深交所), company investor-relations pages, SASAC (国资委) disclosures for state-owned enterprises, and reputable financial portals. For HK-listed or applicant companies, search HKEXnews, the Stock Exchange application proof page, annual reports, prospectuses, and announcements.
+- Preserve source URLs and document names as references. Use the most complete source available, such as annual report full text rather than annual report summary.
 
-### 2. Deep Dive into Core Business & Market Position
+### 2. Build the Evidence Base Before Writing
 
-- Research the specific business models, core products and services, business segments, major clients, and suppliers.
-- Find industry rankings, industry outlook and entry barriers, the company's market share data, and competitive advantages, and a list of the company's key competitors in China and overseas
-- Identify the company's core assets (e.g., specific plants, machinery, patents, key infrastructure) and their operational status.
+- Extract hard facts from official disclosures: segment revenue, gross margin, R&D expenses, R&D headcount, patents, certifications, customer names if disclosed, supplier dependence, production capacity, product applications, geographic revenue, cash flow, capital expenditure, and pending transactions.
+- Supplement official disclosures with credible industry data from regulator reports, industry associations, market research summaries, exchange filings of peers, and reputable financial media.
+- Cross-check important numerical claims against at least one official source where possible. Always cite the reporting period, such as 2025 annual report or 2025 interim report.
+- For technical or manufacturing companies, capture both commercial evidence and operational evidence: customer certification cycles, equipment base, quality systems, testing capabilities, capacity, yield, supply-chain localization, and product roadmap.
 
-### 3. Financial Performance & Management Structure
+### 3. Deep Dive into Core Business, Market Position, and Business Model
 
-- Search for the latest three years of financial data (revenue, profit, total assets). Look for official announcements, SASAC (国资委) reports if state-owned, or financial news platforms.
-- Identify key shareholders, ultimate controllers, and core management team members.
+- Describe the company's revenue model, product portfolio, major business lines, customer groups, supplier structure, production and delivery model, and sales process.
+- Identify the strategic role of the company's products in the value chain. Explain why the product is mission-critical to customers and what would make replacement difficult.
+- Find industry rankings, market size, growth drivers, entry barriers, regulatory tailwinds, localization trends, and peer comparisons, including a list of the company's key competitors in China and overseas.
+- Identify core assets, including mines, production bases, patents, certifications, platforms, customer access, data assets, infrastructure, manufacturing lines, R&D centers, or licenses, and confirm their operational status.
 
-### 4. Strategic Analysis & IPO Recommendations (Core Section)
+### 4. Financial Performance and Governance
 
-- **This is the core of the research report.** It must be highly detailed, specific, and supported by public data and facts.
-- Analyze the company's positioning, vision, or mission.
-- Summarize the company's **Core Competitive Advantages** (aim for 4-6 distinct, well-supported points).
-- Formulate specific, actionable, and grounded recommendations for the company's future strategy and the "Use of Proceeds" (募集资金用途) in the potential IPO. These recommendations must align with the company's strategic goals and industry trends.
+- Compile the latest three years of key financial data, including revenue, gross profit, gross margin, net profit, adjusted profit if applicable, operating cash flow, capex, R&D expenses, total assets, borrowings, and gearing if relevant.
+- For listed companies, include latest interim results if they materially update the story.
+- Identify shareholders, ultimate controllers, directors, supervisors, senior management, incentive plans, pledged shares, related-party transactions, major acquisitions, and material financing activity.
 
-### 5. Risk Assessment & ESG Compliance
+### 5. Competitive Advantages Messaging Playbook
 
-- Search specifically for major litigation, disputes, or regulatory penalties involving the company.
-- Identify industry-specific risks (e.g., export restrictions, commodity price fluctuations).
-- Look for compliance and ESG-related risks (e.g., environmental issues, labor disputes, international sanctions).
-- *Note: Because this section can be negative, it is placed at the end of the report after the strategic analysis.*
+The competitive-advantages section is often the most important part of the report for management and investor communication. Do not write generic advantages. Convert the evidence base into 4-6 concise but attention-grabbing headings, each supported by 1-2 short paragraphs of official disclosures and current industry data.
 
-### 6. Report Generation (Markdown & Word)
+Use this method:
 
-- Synthesize all findings into a highly structured, professional Markdown report.
-- **Language**: Always write the final report in **Chinese** (unless explicitly requested otherwise), as it is the standard working language for the user.
-- **Format**: Use clear headings, full paragraphs (avoid excessive bullet points), and Markdown tables for financial data and use of proceeds recommendations.
-- **Output**: The report must be generated in both Markdown (`.md`) and Word (`.docx`) formats.
-- Use the included script to convert the Markdown report to Word format:
+1. Start from the company's disclosed facts, not from adjectives. Use annual reports, interim reports, prospectuses, ESG reports, and official announcements as the anchor.
+2. Combine company evidence with market evidence. For each advantage, pair an internal proof point, such as revenue, margin, patents, certifications, customer access, capacity, or equipment, with an external tailwind, such as market size, growth rate, regulation, localization, or customer capex cycle.
+3. Rewrite the title into a capital-markets message. Prefer simple, memorable headings that communicate why investors or management should care.
+4. Keep the supporting text short. Each advantage should normally be 1-2 paragraphs, with the most compelling data only.
+5. Avoid unsupported superlatives. If using phrases such as “leading”, “global”, “only”, “first”, or “high barrier”, support them with a disclosure, ranking, award, customer list, certification, or quantifiable performance.
+
+Use this title pattern where helpful:
+
+| Generic draft | Stronger investor-facing title |
+|---|---|
+| Customer certification advantage | “Locked into the Customer’s Critical Process: Top-Tier Customer Certification as a Moat” |
+| Market opportunity | “Riding a [market size] Industry Wave: Core Product Exposed to Structural Growth” |
+| R&D advantage | “R&D Compounding: Turning Import Substitution into Global Competition” |
+| Product expansion | “[Core Product] + [Second Curve]: From Single Champion to Platform Supplier” |
+| Manufacturing capability | “Mass Production Is the Real Moat: Quality Systems and Heavy Equipment Enable High-End Delivery” |
+
+For each advantage, include: (i) a punchy heading, (ii) one paragraph of public evidence, (iii) one paragraph explaining why the point matters to management, investors, valuation, or IPO positioning. Keep the section polished enough to be copied into a pitch deck or management briefing.
+
+### 6. Strategic Analysis and IPO Recommendations
+
+- Analyze the company's positioning, mission, development strategy, and capital markets narrative.
+- Formulate specific recommendations for future strategy and use of proceeds. Link every recommendation to a disclosed bottleneck or growth opportunity, such as capacity expansion, R&D, working capital, overseas sales, supply-chain localization, acquisitions, digitalization, compliance systems, or ESG upgrades.
+- For listed companies, adapt the recommendation to the relevant context: refinancing, H-share listing, spin-off, overseas listing, acquisition financing, market repositioning, or investor-relations story refresh.
+
+### 7. Risk Assessment and ESG Compliance
+
+- Search specifically for major litigation, disputes, regulatory penalties, exchange inquiry letters, sanctions, safety or environmental incidents, product quality issues, IP disputes, related-party transactions, debt pressure, share pledges, goodwill impairment, and M&A integration risks.
+- Identify ESG-related risks, including environmental compliance, labor issues, supply-chain traceability, overseas trade controls, sanctions, export restrictions, data security, and anti-bribery compliance.
+- Place this section after the strategic and competitive analysis unless the user asks for a legal due diligence memo, because the pitch report should first establish business value before presenting risks. Lawyers need to know the “skeletons in the closet” before pitching, so do not soften this section.
+
+### 8. Report Generation and Deliverables
+
+- Write the final report in Chinese unless the user explicitly requests another language.
+- Use a professional capital markets style, with complete paragraphs, concise tables, and data-backed analysis.
+- Use inline numeric citations with Markdown reference-style links for factual claims and external data.
+- Generate both Markdown (`.md`) and Word (`.docx`) outputs. Do not generate PDF unless explicitly requested.
+- Convert Markdown to Word with the bundled script, which uses pandoc and adds a table of contents:
+
+  ```bash
+  python /home/ubuntu/skills/ipo-company-research/scripts/md_to_docx.py <input.md> <output.docx>
   ```
-  python3 ~/.hermes/skills/ipo-company-research/scripts/md_to_docx.py <input.md> <output.docx>
+
+- Install pandoc first if it is missing (`sudo apt-get install -y pandoc`). If pandoc cannot be installed or the script fails, use the bundled `python-docx` fallback instead of writing a converter from scratch. It handles headings (H1-H4), tables with styled headers and alternating row shading, bold/italic inline formatting, and Chinese font configuration (宋体 body, 黑体 headings); it does not handle images or nested lists:
+
+  ```bash
+  python3 -m venv .venv && .venv/bin/pip install python-docx   # use a venv if pip3 install is blocked
+  python /home/ubuntu/skills/ipo-company-research/scripts/md_to_docx_py.py <input.md> <output.docx>
   ```
-  This script requires **pandoc** (`brew install pandoc` or `apt install pandoc`). If pandoc is unavailable, use the python-docx fallback instead:
+
+- Add centered page numbers to the footer of any Word deliverable, as the user requires them on formal legal and pitch documents. The script rewrites the file in place, so run it after the final conversion:
+
+  ```bash
+  python /home/ubuntu/skills/ipo-company-research/scripts/add_page_numbers.py <output.docx>
   ```
-  pip3 install python-docx
-  python3 ~/.hermes/skills/ipo-company-research/scripts/md_to_docx_py.py <input.md> <output.docx>
-  ```
-  The fallback script handles markdown headings (H1-H4), tables with styled headers and alternating row shading, bold/italic inline formatting, and Chinese font configuration (宋体 body, 黑体 headings). It does not handle images or nested lists.
-- Deliver both the `.md` and `.docx` files to the user.
+
+- Preview the Word file before delivery.
 
 ## Output Structure Template
 
-Your final report MUST follow this structure (or a highly similar one tailored to the specific company):
+The final report should follow this structure, tailored to the company and user request:
 
-1. **摘要 (Executive Summary)**: Brief overview of the company and its IPO readiness.
-2. **公司概况与历史沿革 (Company Overview & History)**: Basic facts, restructuring, capital and shareholder structure. Include insights from past prospectuses or annual reports if applicable.
-3. **核心业务与核心资产 (Core Business & Assets)**: Detailed breakdown of segments, products and services, and key assets.
-4. **市场地位与竞争优势 (Market Position & Competitive Edges)**: Rankings, market share, moats and key competitors.
-5. **财务表现 (Financial Performance)**: 3-year data table and analysis.
-6. **股东与管理层构成 (Shareholders & Management)**: Ownership structure and key executives.
-7. **业务发展策略与港股上市募资用途建议 (Development Strategy & Proposed Use of Proceeds)**: **[CORE SECTION]** Detailed analysis of positioning, vision, 4-6 core competitive advantages, and highly specific, data-backed recommendations for the use of IPO proceeds.
-8. **重大诉讼、争议与主要风险 (Litigation, Disputes & Key Risks)**: Crucial for legal due diligence, placed at the end.
-9. **参考文献 (References)**: List of sources used.
+1. **摘要（Executive Summary）**: Company overview, investment or IPO readiness, and core judgment.
+2. **公司概况与历史沿革**: Basic facts, restructuring, controller, milestones, capital operations, and listing history if any.
+3. **核心业务与核心资产**: Product lines, technologies, operating model, production bases, customers, suppliers, and key assets.
+4. **市场地位与竞争优势**: Industry size and growth, market position, key competitors, and 4-6 attention-grabbing competitive advantages supported by official disclosures and industry data.
+5. **主要客户、供应商与商业模式**: Customer certification, revenue model, procurement model, supplier risks, and customer concentration where disclosed.
+6. **财务表现**: Three-year financial table plus latest interim update if material; analyze revenue quality, margin, cash flow, R&D, leverage, and capex.
+7. **股东与管理层构成**: Shareholding, controller, board and senior management, incentive arrangements, pledges, related-party matters, and governance observations.
+8. **业务发展策略与募资用途建议**: **[Core section]** Capital markets story, strategic priorities, proposed use of proceeds, and execution logic.
+9. **重大诉讼、争议与主要风险**: Legal, regulatory, financial, operational, ESG, geopolitical, supply-chain, IP, and M&A risks.
+10. **结论与资本市场建议**: Concise positioning, transaction suitability, diligence priorities, and recommended next steps.
+11. **参考文献**: Official disclosures and credible sources used.
 
-## Best Practices for Capital Markets Research
+## Quality Standards
 
-- **Source Credibility**: Prioritize official company websites, government/regulator portals (e.g., SASAC), authoritative financial media (e.g., Reuters, Bloomberg, Sina Finance), and industry-specific databases.
-- **Data Accuracy**: Cross-check financial figures across multiple sources if possible. Always cite the year/quarter for the data.
-- **Legal Focus**: Pay special attention to the "Risks" and "Litigation" sections. Lawyers need to know the "skeletons in the closet" before pitching.
-- **Actionable Pitch**: The "Use of Proceeds" section should not be generic. It must tie directly to the company's stated future plans and current bottlenecks.
+- Prioritize official disclosures, exchange filings, regulator portals, company websites, and authoritative industry bodies.
+- Use public internet search to fill gaps, but do not let media articles override official disclosures.
+- For listed companies, always check the latest annual report and interim report before finalizing competitive advantages, financial analysis, or management-facing messaging.
+- Make the report useful for capital markets lawyers: surface legal and disclosure issues, but also provide a clear, persuasive equity story.
+- Make competitive advantages boardroom-ready: short titles, hard data, and a clear reason the advantage matters to investors.
+- Avoid boilerplate use-of-proceeds recommendations. Tie each recommendation to the company's disclosed strategy, financial constraints, and industry trend.
+- Attach both final Word and Markdown files, and include any standalone revised chapter if the user asked to update a specific section.
 
-### Search Methodology for Chinese Companies
+## Researching Chinese Companies
 
-When researching Chinese companies, search engines and data sources behave differently than for Western companies. See `references/search-methodology.md` for detailed curl commands, browser extraction techniques, and a list of sites that work vs. don't work. Key rules of thumb:
+Search engines and data sources behave very differently for Chinese companies than for Western ones. Read `references/search-methodology.md` before starting a Chinese-language research task. Key rules of thumb:
 
-**What works:**
-- **`curl` + Sina Finance (finance.sina.com.cn)**: Directly curl article URLs with a desktop User-Agent; returns clean, parseable HTML with full article text. Best source for detailed Chinese financial news.
-- **`curl` + nfnews.com (南方+)**: Similar to Sina — direct curl with desktop UA returns clean content. Good for Guangdong/Southern China company coverage.
-- **DuckDuckGo HTML search** (`duckduckgo.com/html/?q=...`): Works for initial discovery of Chinese-language articles. Use `uddg=` link extraction to get clean URLs. May rate-limit after 3-4 queries; space queries apart or rotate search terms.
-- **Browser (browser_navigate) + console extraction**: For articles behind paywalls or JS-rendered content. Navigate to the article, then use `browser_console` with `document.querySelector('.article-content')?.innerText` to extract full text. Jiemian (界面新闻), cls.cn (财联社), and 21jingji (21经济报道) articles work well with this method.
-- **Browser (browser_navigate) + snapshot**: Use the accessibility snapshot for article structure; can extract headings and metadata even when full text isn't directly visible.
+- **Works:** `curl` with a desktop User-Agent against Sina Finance (`finance.sina.com.cn`) and nfnews.com (南方+); DuckDuckGo HTML search (`duckduckgo.com/html/?q=...`) for discovery, spacing queries apart to avoid rate limiting; browser navigation plus console extraction of `.article-content` for 界面新闻, 财联社 and 21经济报道.
+- **Avoid:** curl scraping of Bing, Baidu or Baidu Baike (JS-rendered or CAPTCHA-protected), and Google search curl from non-US IPs.
+- **Query patterns:** company name plus 招股书 / 上市 / 财务数据 / 股东 / 增资 / 估值 / 处罚 / 证监局; add Wind数据 or 排名 for securities firms and other ranking-driven sectors.
+- **Financial data priority:** Sina Finance articles, then company annual reports and prospectuses, then Wind or 东方财富 Choice data cited in media, then company IR pages.
 
-**What does NOT work (avoid):**
-- **Bing curl scraping**: Bing search results are heavily JS-rendered; curl returns unparseable JavaScript, not HTML content. Do not use Bing for automated Chinese searches.
-- **Baidu Baike direct curl**: Triggers CAPTCHA/anti-crawl pages immediately. Use browser navigation instead if Baike access is critical.
-- **Baidu search curl**: Similar anti-crawl protections; avoid direct curl to Baidu domains.
-- **Google search curl from non-US IPs**: May return empty results or CAPTCHAs for Chinese-language queries.
+## Source Repository
 
-**Financial data sources (priority order):**
-1. Sina Finance articles (finance.sina.com.cn) — often contain detailed financial tables
-2. Company annual reports / prospectuses (if publicly available)
-3. Wind data cited in news articles (e.g., 界面新闻, 21经济报道)
-4. 东方财富 Choice data (cited in media)
-5. Company official website investor relations sections
-
-**For securities firms specifically:**
-- Wind rankings are the standard industry reference for business-line rankings
-- CSRC (证监会) and regional bureau (证监局) websites for regulatory actions
-- Exchange filings (上交所/深交所) for IPO progress and prospectuses
+GitHub: https://github.com/CoreyZhangKW/CZtoolkit
+Path: `skills/ipo-company-research/`

@@ -1,6 +1,6 @@
 # Search Methodology for Chinese Company Research
 
-## Session: 万联证券 (Wanlian Securities) — 2026-05-07
+Distilled from past research sessions (first built during a 万联证券 / Wanlian Securities exercise, May 2026). Treat it as a living reference: re-test a method before relying on it, and record newly proven or failed approaches here.
 
 ### Proven Approaches (What Works)
 
@@ -33,10 +33,10 @@ Same pattern as Sina — direct curl with desktop UA returns clean, parseable co
 - **Rate limiting warning**: After 3-4 rapid queries, DuckDuckGo may return empty results. Space queries apart or rotate search terms. If you get empty results, wait 30-60 seconds before retrying.
 - Good for initial discovery but not for deep content extraction
 
-#### 4. Browser Navigation + Console Extraction
-For articles behind paywalls or JS-rendered content:
+#### 4. Browser Navigation + In-Page Script Extraction
+For articles behind paywalls or JS-rendered content, navigate to the article and run a script in the page console to read the article container directly:
 ```javascript
-// In browser_console after browser_navigate
+// Run in the page console after navigating to the article
 document.querySelector('.article-content')?.innerText || 
 document.querySelector('.main-article')?.innerText || 
 document.querySelector('article')?.innerText
@@ -48,7 +48,7 @@ Sites tested successfully:
 - **21jingji.com** (21经济报道): May time out on initial load; try alternative sources first
 
 #### 5. Browser Snapshot
-Use `browser_navigate` + accessibility snapshot for:
+Use browser navigation plus an accessibility snapshot or page-text extraction for:
 - Article structure and headings
 - Metadata extraction (author, date, source)
 - Even when full text isn't visible, the snapshot reveals key structural elements
@@ -61,7 +61,7 @@ Use `browser_navigate` + accessibility snapshot for:
 | **Baidu Baike direct curl** | Immediate CAPTCHA/anti-crawl page | Use browser navigation if essential |
 | **Baidu search curl** | Anti-crawl protections | Use DuckDuckGo for Chinese queries |
 | **Google search curl from non-US IPs** | Empty results or CAPTCHAs for Chinese queries | DuckDuckGo or browser |
-| **Company official websites** | May have cert errors (e.g., wlzq.com.cn had ERR_CERT_COMMON_NAME_INVALID) | Fall back to news articles |
+| **Company official websites** | May have certificate errors (e.g., wlzq.com.cn returned ERR_CERT_COMMON_NAME_INVALID) | Fall back to news articles |
 
 ### Financial Data Sources (Priority Order)
 
@@ -69,7 +69,7 @@ Use `browser_navigate` + accessibility snapshot for:
 2. **Company annual reports / prospectuses** — if publicly available via CSRC/exchange websites
 3. **Wind data cited in news articles** — 界面新闻, 21经济报道, 券商中国 frequently cite Wind rankings
 4. **东方财富 Choice data** — cited in media; direct access may require subscription
-5. **Company IR pages** — try `browser_navigate` if cert issues aren't blocking
+5. **Company IR pages** — try browser navigation if certificate issues aren't blocking
 
 ### Search Query Strategy for Chinese Companies
 
